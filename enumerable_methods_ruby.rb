@@ -126,3 +126,7 @@ def multiply_els(array)
   result = proc { |product, num| product * num }
   array.my_inject(&result)
 end
+
+# rubocop: enable Metrics/ModuleLength
+# rubocop: enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+# rubocop: enable Lint/ToEnumArguments
