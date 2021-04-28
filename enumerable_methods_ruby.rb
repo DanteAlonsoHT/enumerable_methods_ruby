@@ -29,7 +29,7 @@ module Enumerable
 
   def my_none?(param = nil)
     if !block_given? && param.nil?
-      to_a.my_each { |x| return true if i == false || x.nil? }
+      to_a.my_each { |i| return true if i == false || i.nil? }
       return false
     elsif !block_given? && param.is_a?(Class)
       to_a.my_each { |i| return false if i.instance_of?(param) }
