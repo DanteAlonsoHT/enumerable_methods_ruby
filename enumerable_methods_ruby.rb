@@ -7,7 +7,7 @@ module Enumerable
     end
     self
   end
-  
+
   def my_each_with_index
     return to_enum(:my_each_with_index) unless block_given?
 
@@ -15,5 +15,15 @@ module Enumerable
       yield to_a[i], i
     end
     self
+  end
+
+  def my_select
+    return to_enum(:my_select) unless block_given?
+
+    new_array = []
+    to_a.my_each do |i|
+      new_array.push(i) if yield i
+    end
+    new_array
   end
 end
