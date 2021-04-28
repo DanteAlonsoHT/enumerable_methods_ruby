@@ -59,4 +59,16 @@ module Enumerable
     end
     counter
   end
+
+  def my_map(proc = nil)
+    return to_enum(:my_map) unless block_given?
+
+    new_array = []
+    if proc.nil?
+      to_a.my_each { |x| new_array.push(yield(x)) }
+    else
+      to_a.my_each { |i| new_array.push(proc.call(i)) }
+    end
+    new_array
+  end
 end
