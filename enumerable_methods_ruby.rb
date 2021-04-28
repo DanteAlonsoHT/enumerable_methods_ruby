@@ -1,3 +1,7 @@
+# rubocop: disable Metrics/ModuleLength
+# rubocop: disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+# rubocop: disable Lint/ToEnumArguments
+
 module Enumerable
   def my_each
     return to_enum(:my_each) unless block_given?
@@ -91,3 +95,7 @@ def multiply_els(array)
   result = proc { |product, num| product * num }
   array.my_inject(&result)
 end
+
+# rubocop: enable Metrics/ModuleLength
+# rubocop: enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+# rubocop: enable Lint/ToEnumArguments
