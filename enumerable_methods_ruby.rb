@@ -21,8 +21,8 @@ module Enumerable
     return to_enum(:my_select) unless block_given?
 
     new_array = []
-    to_a.my_each do |i|
-      new_array.push(i) if yield i
+    to_a.my_each do |x|
+      new_array.push(x) if yield x
     end
     new_array
   end
