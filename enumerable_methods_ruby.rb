@@ -71,4 +71,11 @@ module Enumerable
     end
     new_array
   end
+
+  def my_inject(*param)
+    collection = is_a?(Range) ? to_a : self
+
+    reduce = param[0] if param[0].is_a?(Integer)
+    operator = param[0].is_a?(Symbol) ? param[0] : param[1]
+  end
 end
