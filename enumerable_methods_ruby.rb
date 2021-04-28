@@ -65,7 +65,7 @@ module Enumerable
 
     new_array = []
     if proc.nil?
-      to_a.my_each { |x| new_array.push(yield(x)) }
+      to_a.my_each { |i| new_array.push(yield(i)) }
     else
       to_a.my_each { |i| new_array.push(proc.call(i)) }
     end
