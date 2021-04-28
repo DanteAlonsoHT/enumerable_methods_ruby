@@ -77,10 +77,12 @@ module Enumerable
 
     reduce = param[0] if param[0].is_a?(Integer)
     operator = param[0].is_a?(Symbol) ? param[0] : param[1]
-    
+
     if operator
       collection.my_each { |i| reduce = reduce ? reduce.send(operator, i) : i }
       return reduce
     end
+    collection.my_each { |i| reduce = reduce ? yield(reduce, i) : i }
+    reduce
   end
 end
