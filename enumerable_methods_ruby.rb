@@ -86,3 +86,8 @@ module Enumerable
     reduce
   end
 end
+
+def multiply_els(array)
+  result = proc { |product, num| product * num }
+  array.my_inject(&result)
+end
