@@ -36,10 +36,10 @@ module Enumerable
       to_a.my_each { |i| return false if i == false || i.nil? }
     elsif !block_given? && param.is_a?(Class)
       to_a.my_each { |i| return false unless [i.class, i.class.superclass].include?(param) }
-    elsif !block_given? && !param.nil?
-      to_a.my_each { |i| return false unless i == param }
     elsif !block_given? && (param.is_a? Regexp)
       to_a.my_each { |i| return false unless i.match(param) }
+    elsif !block_given? && !param.nil?
+      to_a.my_each { |i| return false unless i == param }
     elsif block_given?
       to_a.my_each { |i| return false unless yield i }
     end
@@ -52,10 +52,10 @@ module Enumerable
       return false
     elsif param.is_a?(Class)
       to_a.my_each { |i| return true if [i.class, i.class.superclass].include?(param) }
-    elsif !block_given? && !param.nil?
-      to_a.my_each { |i| return true if i == param }
     elsif param.is_a?(Regexp)
       to_a.my_each { |i| return true if i.match(param) }
+    elsif !block_given? && !param.nil?
+      to_a.my_each { |i| return true if i == param }
     else
       to_a.my_each { |i| return true if yield i }
     end
@@ -64,8 +64,8 @@ module Enumerable
 
   def my_none?(param = nil)
     if !block_given? && param.nil?
-      to_a.my_each { |i| return true if i == false || i.nil? }
-      return false
+      to_a.my_each { |i| return false if i != false || i.nil? }
+      return true
     elsif !block_given? && param.is_a?(Class)
       to_a.my_each { |i| return false if i.instance_of?(param) }
       return true
