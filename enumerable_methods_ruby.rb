@@ -51,7 +51,7 @@ module Enumerable
   def my_count(param = nil)
     counter = 0
     if block_given?
-      to_a.my_each { |x| counter += 1 if yield x }
+      to_a.my_each { |i| counter += 1 if yield i }
     elsif !block_given? && param.nil?
       counter = to_a.length
     else
