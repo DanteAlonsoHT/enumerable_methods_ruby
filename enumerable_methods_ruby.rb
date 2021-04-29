@@ -1,7 +1,6 @@
 # rubocop: disable Metrics/ModuleLength
 # rubocop: disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 # rubocop: disable Lint/ToEnumArguments
-# rubocop: diable Style/NestedModifier, Style/SoleNestedConditional, Style/IfUnlessModifierOfIfUnless
 
 module Enumerable
   def my_each
@@ -65,7 +64,9 @@ module Enumerable
 
   def my_none?(param = nil)
     if !block_given? && param.nil?
-      to_a.my_each { |i| return false if i == true || !i.nil? unless i.nil? || i == false }
+      to_a.my_each do |i|
+        return false if !(i.nil? || i == false) && (i == true || !i.nil?)
+      end
       return true
     elsif !block_given? && param.is_a?(Class)
       to_a.my_each { |i| return false if i.instance_of?(param) }
@@ -131,4 +132,3 @@ end
 # rubocop: enable Metrics/ModuleLength
 # rubocop: enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 # rubocop: enable Lint/ToEnumArguments
-# rubocop: enable Style/NestedModifier, Style/SoleNestedConditional, Style/IfUnlessModifierOfIfUnless
