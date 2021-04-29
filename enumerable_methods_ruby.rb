@@ -1,6 +1,7 @@
 # rubocop: disable Metrics/ModuleLength
 # rubocop: disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 # rubocop: disable Lint/ToEnumArguments
+# rubocop: diable Style/NestedModifier, Style/SoleNestedConditional, Style/IfUnlessModifierOfIfUnless
 
 module Enumerable
   def my_each
@@ -130,3 +131,4 @@ end
 # rubocop: enable Metrics/ModuleLength
 # rubocop: enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 # rubocop: enable Lint/ToEnumArguments
+# rubocop: enable Style/NestedModifier, Style/SoleNestedConditional, Style/IfUnlessModifierOfIfUnless
