@@ -64,22 +64,17 @@ module Enumerable
 
   def my_none?(param = nil)
     if !block_given? && param.nil?
-      puts 1
       to_a.my_each { |i| return false if i == false || !i.nil? }
       return true
     elsif !block_given? && param.is_a?(Class)
-      puts 2
       to_a.my_each { |i| return false if i.instance_of?(param) }
       return true
     elsif !block_given? && param.instance_of?(Regexp)
-      puts 3
       to_a.my_each { |i| return false if i.match(param) }
       return true
     elsif !block_given? && !param.nil?
-      puts 4
       to_a.my_each { |i| return false if i == param }
     elsif block_given? && param.instance_of?(Range)
-      puts 5
       to_a.my_each { |i| return false if yield i }
       return true
     else
@@ -135,8 +130,3 @@ end
 # rubocop: enable Metrics/ModuleLength
 # rubocop: enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 # rubocop: enable Lint/ToEnumArguments
-
-a = [nil]
-
-puts a.none?
-puts a.my_none?
